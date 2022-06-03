@@ -1,1 +1,46 @@
 @use '../../sass' as *;
+
+.conversion-select {
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
+
+  &--title {
+    padding: 1rem 1.5rem 0.8rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-size: $input-font-size;
+    color: $text-grey;
+  }
+
+  &--dropdown {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    border: 1px solid $border-color;
+    border-top: none;
+    border-radius: $border-radius;
+
+    &__open {
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+      top: 6rem;
+      left: 0;
+    }
+  }
+
+  &--item {
+    @include flex(flex-start, flex-start);
+    padding: 8px 16px;
+    cursor: pointer;
+    background: $background;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $border-color;
+    }
+  }
+}
