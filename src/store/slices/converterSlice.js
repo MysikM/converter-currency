@@ -33,6 +33,12 @@ const converterSlice = createSlice({
           state.rightOperand = action.payload;
           state.leftOperand = state.course/state.rightOperand;
       },
+      changeLeftSelect: (state, action) => {
+          state.leftSelect = action.payload;
+      },
+      changeRightSelect: (state, action) => {
+          state.rightSelect = action.payload;
+      },
     },
     extraReducers: {
         [loadCurrentCourse.fulfilled]: (state, action) => {
@@ -42,4 +48,4 @@ const converterSlice = createSlice({
 })
 
 export default converterSlice.reducer;
-export const {changeLeftOperand, changeRightOperand} = converterSlice.actions;
+export const {changeLeftOperand, changeRightOperand, changeLeftSelect, changeRightSelect} = converterSlice.actions;

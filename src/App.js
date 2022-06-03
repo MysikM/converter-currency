@@ -13,7 +13,7 @@ function App() {
 
     useEffect(()=>{
         dispatch(loadCurrentCourse(currencyTypes));
-    }, []);
+    }, [leftSelect, rightSelect]);
 
   return (
     <div className='container'>

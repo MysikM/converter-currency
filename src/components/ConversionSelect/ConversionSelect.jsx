@@ -1,17 +1,24 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './conversion-select.scss';
 import {currencyList} from "../../data/data";
+import {useDispatch} from "react-redux";
+import {
+    changeLeftSelect,
+    changeRightSelect,
+} from "../../store/slices/converterSlice";
 
-const ConversionSelect = () => {
+const ConversionSelect = ({currency, leftOperand}) => {
     const ref = useRef();
+    const dispatch = useDispatch();
 
-    const [baseCurrency, setBaseCurrency] = useState('USD');
+    const [baseCurrency, setBaseCurrency] = useState(currency);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const dropdownHandler = () => setIsDropdownOpen(!isDropdownOpen);
     const pickCurrency = (item) => {
         setIsDropdownOpen(false);
         setBaseCurrency(item);
+        dispatch(leftOperand ? changeLeftSelect(item) : changeRightSelect(item))
     };
 
     useEffect(() => {
