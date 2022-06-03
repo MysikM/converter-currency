@@ -9,4 +9,11 @@
   @include mobile {
     flex-direction: column;
   }
+
+  &--btn-swap {
+    img {
+      width: 24px;
+      cursor: pointer;
+    }
+  }
 }

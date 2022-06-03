@@ -23,6 +23,7 @@ const converterSlice = createSlice({
         course: null,
         leftSelect: 'USD',
         rightSelect: 'UAH',
+        helperSelect: null,
     },
     reducers: {
       changeLeftOperand: (state, action) => {
@@ -39,6 +40,12 @@ const converterSlice = createSlice({
       changeRightSelect: (state, action) => {
           state.rightSelect = action.payload;
       },
+      swapSelect: (state) => {
+          state.helperSelect = state.leftSelect;
+          state.leftSelect = state.rightSelect;
+          state.rightSelect = state.helperSelect;
+          state.helperSelect = null;
+      }
     },
     extraReducers: {
         [loadCurrentCourse.fulfilled]: (state, action) => {
@@ -48,4 +55,10 @@ const converterSlice = createSlice({
 })
 
 export default converterSlice.reducer;
-export const {changeLeftOperand, changeRightOperand, changeLeftSelect, changeRightSelect} = converterSlice.actions;
+export const {
+    changeLeftOperand,
+    changeRightOperand,
+    changeLeftSelect,
+    changeRightSelect,
+    swapSelect
+} = converterSlice.actions;

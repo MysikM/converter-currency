@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {
     changeLeftOperand,
     changeLeftSelect, changeRightOperand,
-    changeRightSelect,
+    changeRightSelect, swapSelect,
 } from "../../store/slices/converterSlice";
 
 const ConversionSelect = ({currency, isLeftOperand, operand}) => {
@@ -25,6 +25,10 @@ const ConversionSelect = ({currency, isLeftOperand, operand}) => {
             dispatch(isLeftOperand ? changeLeftOperand(operand) : changeRightOperand(operand));
         }, 200);
     };
+
+    useEffect(()=>{
+        setBaseCurrency(currency);
+    }, [currency]);
 
     useEffect(() => {
         const checkIfClickedOutside = e => {
