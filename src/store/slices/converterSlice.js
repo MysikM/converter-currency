@@ -1,10 +1,14 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import {API_URL, KEY} from "../../data/data";
-const loadCurrentCourse = createAsyncThunk(
+
+export const loadCurrentCourse = createAsyncThunk(
     'converter/load',
-    async (f,s) => {
+    async (currencyTypes) => {
+        const {leftSelect, rightSelect} = currencyTypes;
         try {
-            const response = await fetch(`${API_URL}?apiKey=${KEY}&q=${f}_${s}&compact=ultra`);
+            const response = await fetch(`${API_URL}?apiKey=${KEY}&q=${leftSelect}_${rightSelect}&compact=ultra`);
+            const data = await response.json();
+            return data[`${leftSelect}_${rightSelect}`];
         } catch (e) {
             alert(e.message);
         }
@@ -14,11 +18,11 @@ const loadCurrentCourse = createAsyncThunk(
 const converterSlice = createSlice({
     name: 'converter',
     initialState: {
-        leftOperand: null,
+        leftOperand: 1,
         rightOperand: null,
         course: null,
-        leftSelect: null,
-        rightSelect: null,
+        leftSelect: 'USD',
+        rightSelect: 'UAH',
     },
     reducers: {
       changeLeftOperand: (state, action) => {
@@ -32,9 +36,10 @@ const converterSlice = createSlice({
     },
     extraReducers: {
         [loadCurrentCourse.fulfilled]: (state, action) => {
-            state.course = action.payload
+            state.course = action.payload.toFixed(2);
         }
     }
 })
 
 export default converterSlice.reducer;
+export const {changeLeftOperand, changeRightOperand} = converterSlice.actions;
