@@ -5,19 +5,19 @@ import ConversionSelect from "../ConversionSelect/ConversionSelect";
 import {useSelector} from "react-redux";
 
 const ConversionFormWrapper = () => {
-    const {leftSelect, rightSelect} = useSelector(state => state.converter);
+    const {leftSelect, rightSelect, leftOperand, rightOperand} = useSelector(state => state.converter);
     return (
         <section className='conversion-form'>
             <div className='conversion-form--left'>
-                <ConversionNumberInput />
-                <ConversionSelect currency={leftSelect} leftOperand={true} />
+                <ConversionNumberInput operand={leftOperand} isLeftOperand={true} />
+                <ConversionSelect currency={leftSelect} isLeftOperand={true} />
             </div>
             <div className='conversion-form--btn-swap'>
                 w
             </div>
             <div className='conversion-form--right'>
-                <ConversionNumberInput />
-                <ConversionSelect currency={rightSelect} leftOperand={false}/>
+                <ConversionNumberInput operand={rightOperand} isLeftOperand={true} />
+                <ConversionSelect currency={rightSelect} isLeftOperand={false}/>
             </div>
         </section>
     );

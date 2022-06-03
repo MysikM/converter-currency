@@ -7,7 +7,7 @@ import {
     changeRightSelect,
 } from "../../store/slices/converterSlice";
 
-const ConversionSelect = ({currency, leftOperand}) => {
+const ConversionSelect = ({currency, isLeftOperand}) => {
     const ref = useRef();
     const dispatch = useDispatch();
 
@@ -18,9 +18,8 @@ const ConversionSelect = ({currency, leftOperand}) => {
     const pickCurrency = (item) => {
         setIsDropdownOpen(false);
         setBaseCurrency(item);
-        dispatch(leftOperand ? changeLeftSelect(item) : changeRightSelect(item))
+        dispatch(isLeftOperand ? changeLeftSelect(item) : changeRightSelect(item))
     };
-
     useEffect(() => {
         const checkIfClickedOutside = e => {
             if (isDropdownOpen && ref.current && !ref.current?.contains(e.target)) {

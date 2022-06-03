@@ -18,8 +18,8 @@ export const loadCurrentCourse = createAsyncThunk(
 const converterSlice = createSlice({
     name: 'converter',
     initialState: {
-        leftOperand: 1,
-        rightOperand: null,
+        leftOperand: '',
+        rightOperand: '',
         course: null,
         leftSelect: 'USD',
         rightSelect: 'UAH',
