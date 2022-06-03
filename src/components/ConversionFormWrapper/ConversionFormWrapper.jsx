@@ -16,7 +16,7 @@ const ConversionFormWrapper = () => {
                 w
             </div>
             <div className='conversion-form--right'>
-                <ConversionNumberInput operand={rightOperand} isLeftOperand={true} />
+                <ConversionNumberInput operand={rightOperand} isLeftOperand={false} />
                 <ConversionSelect currency={rightSelect} isLeftOperand={false}/>
             </div>
         </section>

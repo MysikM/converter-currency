@@ -18,8 +18,8 @@ export const loadCurrentCourse = createAsyncThunk(
 const converterSlice = createSlice({
     name: 'converter',
     initialState: {
-        leftOperand: '',
-        rightOperand: '',
+        leftOperand: 0,
+        rightOperand: 0,
         course: null,
         leftSelect: 'USD',
         rightSelect: 'UAH',
@@ -31,7 +31,7 @@ const converterSlice = createSlice({
       },
       changeRightOperand: (state, action) => {
           state.rightOperand = action.payload;
-          state.leftOperand = state.course/state.rightOperand;
+          state.leftOperand = (state.rightOperand === 0) ? 0 : state.course/state.rightOperand;
       },
       changeLeftSelect: (state, action) => {
           state.leftSelect = action.payload;

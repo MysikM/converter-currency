@@ -4,21 +4,27 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeLeftOperand, changeRightOperand} from "../../store/slices/converterSlice";
 
 const ConversionNumberInput = ({operand, isLeftOperand}) => {
-    const onlyNumberRegex = /^[0-9]*$/;
+    const onlyNumberRegex = /^(?!0\d)\d*(\.\d+)?$/;
     const [number, setNumber] = useState(operand);
+
+    const {currency} = useSelector(state => state.converter)
 
     const dispatch = useDispatch();
 
     const numberHandler = (e) => {
-        if(onlyNumberRegex.test(e.target.value)){
-            setNumber(e.target.value);
+        if(onlyNumberRegex.test(+e.target.value)){
+            setNumber(+e.target.value);
             dispatch(isLeftOperand ? changeLeftOperand(+e.target.value) : changeRightOperand(+e.target.value))
         }
     };
 
     useEffect(()=>{
-        setNumber(operand)
-    }, [operand])
+        dispatch(isLeftOperand ? changeLeftOperand(+number) : changeRightOperand(+number))
+    }, [currency]);
+
+    useEffect(()=>{
+        setNumber(operand);
+    }, [operand]);
 
 
     return (
