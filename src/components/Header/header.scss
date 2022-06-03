@@ -1,0 +1,12 @@
+@use '../../sass' as *;
+
+.header {
+  margin-top: 2rem;
+  @include flex(center, space-between);
+
+  &--logo {
+    font-size: $display1-font-size;
+    line-height: $display1-line-height;
+    font-weight: $display1-font-weight;
+  }
+}

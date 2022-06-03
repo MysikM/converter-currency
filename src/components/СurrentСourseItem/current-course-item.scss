@@ -1,0 +1,14 @@
+@use '../../sass' as *;
+
+.current-course {
+
+  &--item {
+    @include flex();
+    flex-direction: column;
+  }
+
+  &--course {
+    font-size: 2rem;
+    color: $text-blue;
+  }
+}

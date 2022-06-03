@@ -1,0 +1,6 @@
+@use '../../sass' as *;
+
+.current-course {
+  @include flex();
+  gap: 1rem;
+}
