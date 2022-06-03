@@ -43,10 +43,11 @@ const ConversionSelect = ({currency, isLeftOperand, operand}) => {
     }, [isDropdownOpen]);
 
     return (
-        <div ref={ref} className='conversion-select'>
-            <h4 className='conversion-select--title' onClick={dropdownHandler}>
+        <div ref={ref} className='conversion-select' onClick={dropdownHandler}>
+            <h4 className='conversion-select--title'>
                 {baseCurrency}
             </h4>
+            <span className={`conversion-select--triangle ${isDropdownOpen && 'conversion-select--triangle__active'}`}/>
             <ul className={`conversion-select--dropdown ${isDropdownOpen && 'conversion-select--dropdown__open'}`}>
                 {
                     currencyList.map((el) => <li className='conversion-select--item' key={el.id} onClick={() => pickCurrency(el.currency)}>{el.currency}</li>)

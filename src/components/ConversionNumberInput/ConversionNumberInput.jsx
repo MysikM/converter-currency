@@ -20,7 +20,7 @@ const ConversionNumberInput = ({operand, isLeftOperand}) => {
     };
 
     useEffect(()=>{
-        dispatch(changeLeftOperand(+number));
+        dispatch(changeRightOperand(+number));
     }, [course]);
 
     useEffect(()=>{
