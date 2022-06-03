@@ -27,11 +27,11 @@ const converterSlice = createSlice({
     reducers: {
       changeLeftOperand: (state, action) => {
           state.leftOperand = action.payload;
-          state.rightOperand = state.leftOperand * state.course;
+          state.rightOperand = (state.leftOperand === 0) ? 0 : (state.leftOperand * state.course).toFixed(3);
       },
       changeRightOperand: (state, action) => {
           state.rightOperand = action.payload;
-          state.leftOperand = (state.rightOperand === 0) ? 0 : state.course/state.rightOperand;
+          state.leftOperand = (state.rightOperand === 0) ? 0 : (state.rightOperand/state.course).toFixed(3);
       },
       changeLeftSelect: (state, action) => {
           state.leftSelect = action.payload;

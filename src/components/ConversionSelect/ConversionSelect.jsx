@@ -3,11 +3,12 @@ import './conversion-select.scss';
 import {currencyList} from "../../data/data";
 import {useDispatch} from "react-redux";
 import {
-    changeLeftSelect,
+    changeLeftOperand,
+    changeLeftSelect, changeRightOperand,
     changeRightSelect,
 } from "../../store/slices/converterSlice";
 
-const ConversionSelect = ({currency, isLeftOperand}) => {
+const ConversionSelect = ({currency, isLeftOperand, operand}) => {
     const ref = useRef();
     const dispatch = useDispatch();
 
@@ -15,11 +16,16 @@ const ConversionSelect = ({currency, isLeftOperand}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const dropdownHandler = () => setIsDropdownOpen(!isDropdownOpen);
+
     const pickCurrency = (item) => {
         setIsDropdownOpen(false);
         setBaseCurrency(item);
-        dispatch(isLeftOperand ? changeLeftSelect(item) : changeRightSelect(item))
+        dispatch(isLeftOperand ? changeLeftSelect(item) : changeRightSelect(item));
+        setTimeout(()=>{
+            dispatch(isLeftOperand ? changeLeftOperand(operand) : changeRightOperand(operand));
+        }, 200);
     };
+
     useEffect(() => {
         const checkIfClickedOutside = e => {
             if (isDropdownOpen && ref.current && !ref.current?.contains(e.target)) {

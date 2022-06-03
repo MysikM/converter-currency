@@ -10,14 +10,14 @@ const ConversionFormWrapper = () => {
         <section className='conversion-form'>
             <div className='conversion-form--left'>
                 <ConversionNumberInput operand={leftOperand} isLeftOperand={true} />
-                <ConversionSelect currency={leftSelect} isLeftOperand={true} />
+                <ConversionSelect currency={leftSelect} isLeftOperand={true} operand={leftOperand} />
             </div>
             <div className='conversion-form--btn-swap'>
                 w
             </div>
             <div className='conversion-form--right'>
                 <ConversionNumberInput operand={rightOperand} isLeftOperand={false} />
-                <ConversionSelect currency={rightSelect} isLeftOperand={false}/>
+                <ConversionSelect currency={rightSelect} isLeftOperand={false} operand={rightOperand}/>
             </div>
         </section>
     );
