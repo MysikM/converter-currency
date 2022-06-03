@@ -1,0 +1,13 @@
+@use '../../sass' as *;
+
+.live-exchange {
+  margin-top: 2rem;
+  @include flex();
+  color: $text-grey;
+
+  &--title {
+    font-size: $display2-font-size;
+    line-height: $display2-line-height;
+    font-weight: $display2-font-weight;
+  }
+}
