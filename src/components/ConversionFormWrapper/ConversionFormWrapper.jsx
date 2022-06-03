@@ -6,8 +6,17 @@ import ConversionSelect from "../ConversionSelect/ConversionSelect";
 const ConversionFormWrapper = () => {
     return (
         <section className='conversion-form'>
-            <ConversionNumberInput />
-            <ConversionSelect />
+            <div className='conversion-form--left'>
+                <ConversionNumberInput />
+                <ConversionSelect />
+            </div>
+            <div className='conversion-form--btn-swap'>
+                w
+            </div>
+            <div className='conversion-form--right'>
+                <ConversionNumberInput />
+                <ConversionSelect />
+            </div>
         </section>
     );
 };
